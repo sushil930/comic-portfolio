@@ -1,185 +1,229 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Layout, Star, Heart, Coffee, Rocket } from 'lucide-react';
+import { Code, Layout, Star, Heart, Coffee, Rocket, BookOpen, Lightbulb } from 'lucide-react';
 
 const About = () => {
-  const features = [
+  const comicPanels = [
     {
+      title: "CHAPTER 1: THE BEGINNING",
+      content: "Once upon a time, a curious kid discovered the magic of computers...",
+      icon: BookOpen,
+      color: "bg-yellow-400",
+      rotation: "rotate-2"
+    },
+    {
+      title: "CHAPTER 2: FIRST CODE",
+      content: "console.log('Hello World!') - And with that, a hero was born!",
       icon: Code,
-      title: "Clean Code",
-      description: "Writing maintainable, scalable code with best practices and modern standards.",
-      color: "from-green-500 to-emerald-600"
+      color: "bg-red-500",
+      rotation: "-rotate-1"
     },
     {
-      icon: Layout,
-      title: "Responsive Design",
-      description: "Creating seamless experiences across all devices and screen sizes.",
-      color: "from-blue-500 to-cyan-600"
+      title: "CHAPTER 3: FRONTEND DISCOVERY",
+      content: "The moment I saw my first website come to life... EUREKA! 💡",
+      icon: Lightbulb,
+      color: "bg-blue-500",
+      rotation: "rotate-1"
     },
     {
-      icon: Star,
-      title: "User Experience",
-      description: "Focusing on intuitive interfaces that delight and engage users.",
-      color: "from-purple-500 to-pink-600"
+      title: "CHAPTER 4: THE MISSION",
+      content: "Today: Creating amazing web experiences and seeking internship adventures!",
+      icon: Rocket,
+      color: "bg-green-500",
+      rotation: "-rotate-2"
     }
   ];
 
-  const personalStats = [
-    { icon: Coffee, text: "Coffee Cups", number: "∞" },
-    { icon: Heart, text: "Passion Level", number: "100%" },
-    { icon: Rocket, text: "Projects Launched", number: "50+" }
+  const superpowers = [
+    {
+      icon: Code,
+      title: "Clean Code Master",
+      description: "Writing maintainable, scalable code with superhuman precision!",
+      color: "bg-green-500",
+      level: 90
+    },
+    {
+      icon: Layout,
+      title: "Responsive Design Wizard",
+      description: "Making websites look amazing on ANY device - from smartwatch to billboard!",
+      color: "bg-blue-500",
+      level: 95
+    },
+    {
+      icon: Star,
+      title: "UX Superhero",
+      description: "Creating user experiences so good, they'll think it's magic!",
+      color: "bg-purple-500",
+      level: 85
+    }
   ];
 
   return (
-    <section id="about" className="py-32 bg-gradient-to-br from-gray-50 via-white to-blue-50 relative overflow-hidden">
-      {/* Background decorative elements */}
+    <section id="about" className="py-20 bg-gradient-to-br from-blue-200 via-purple-200 to-pink-200 relative overflow-hidden">
+      {/* Comic Background Elements */}
       <div className="absolute inset-0">
-        <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full blur-2xl opacity-20" />
-        <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-blue-400 to-cyan-400 rounded-full blur-2xl opacity-20" />
+        <div className="halftone-bg absolute inset-0"></div>
+        <motion.div
+          animate={{ rotate: 360 }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="absolute top-10 right-10 comic-marker text-8xl text-yellow-400 opacity-20"
+        >
+          ★
+        </motion.div>
+        <motion.div
+          animate={{ rotate: -360 }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+          className="absolute bottom-20 left-20 comic-marker text-6xl text-red-400 opacity-20"
+        >
+          ⚡
+        </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
+        {/* Comic Book Title */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-20"
+          className="text-center mb-16"
         >
-          <motion.h2 
-            className="text-5xl md:text-6xl font-black text-gray-900 mb-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            About <span className="text-gradient">Me</span>
-          </motion.h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            viewport={{ once: true }}
-            className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-8 rounded-full"
-          />
-          <motion.p 
-            className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-          >
-            I'm a passionate frontend developer with a keen eye for design and a love for creating 
-            digital experiences that make a difference. Currently seeking internship opportunities 
-            to contribute to innovative projects and grow with a dynamic team.
-          </motion.p>
+          <div className="comic-border-yellow bg-white p-8 rounded-3xl transform -rotate-1 inline-block">
+            <h2 className="comic-title text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-blue-600">
+              ORIGIN STORY
+            </h2>
+            <div className="comic-marker text-2xl text-purple-600 mt-2">
+              "How I Became a Frontend Hero!"
+            </div>
+          </div>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div className="glass-effect p-8 rounded-3xl border border-white/50 shadow-2xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">My Journey</h3>
-              <div className="space-y-6 text-gray-600">
-                <p className="leading-relaxed">
-                  With over <span className="font-semibold text-purple-600">2 years of self-taught experience</span> in web development, 
-                  I've honed my skills in modern frontend technologies including React, TypeScript, and Next.js. 
-                  I'm passionate about writing clean, efficient code and creating user interfaces that are both 
-                  beautiful and functional.
-                </p>
-                <p className="leading-relaxed">
-                  My journey in web development started with curiosity and has evolved into a deep 
-                  commitment to continuous learning and improvement. I thrive in collaborative 
-                  environments and am always eager to take on new challenges.
-                </p>
-              </div>
-            </div>
-            
-            {/* Personal stats */}
-            <div className="grid grid-cols-3 gap-4">
-              {personalStats.map((stat, index) => (
-                <motion.div
-                  key={stat.text}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05, y: -5 }}
-                  className="glass-effect p-4 rounded-2xl text-center border border-white/50 shadow-lg"
-                >
-                  <stat.icon className="w-6 h-6 mx-auto mb-2 text-purple-600" />
-                  <div className="text-2xl font-bold text-gradient">{stat.number}</div>
-                  <div className="text-xs text-gray-600 font-medium">{stat.text}</div>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Enhanced skills tags */}
-            <div className="flex flex-wrap gap-3">
-              {['React', 'TypeScript', 'Next.js', 'Tailwind CSS', 'Node.js', 'Git', 'Figma', 'MongoDB'].map((skill, index) => (
-                <motion.span
-                  key={skill}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  viewport={{ once: true }}
-                  whileHover={{ scale: 1.05, y: -2 }}
-                  className="glass-effect px-4 py-2 rounded-full text-sm font-semibold text-gray-700 hover:text-purple-700 transition-all duration-300 cursor-pointer border border-white/50 shadow-md"
-                >
-                  {skill}
-                </motion.span>
-              ))}
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            {features.map((feature, index) => (
-              <motion.div
-                key={feature.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.15 }}
-                viewport={{ once: true }}
-                whileHover={{ scale: 1.02, y: -8 }}
-                className="group glass-effect p-8 rounded-3xl shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-500"
-              >
-                <div className="flex items-start space-x-6">
-                  <motion.div 
-                    className={`bg-gradient-to-r ${feature.color} p-4 rounded-2xl shadow-lg group-hover:scale-110 transition-transform duration-300`}
-                    whileHover={{ rotate: 5 }}
-                  >
-                    <feature.icon className="w-7 h-7 text-white" />
-                  </motion.div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-purple-700 transition-colors duration-300">
-                      {feature.title}
-                    </h3>
-                    <p className="text-gray-600 leading-relaxed">{feature.description}</p>
-                  </div>
+        {/* Comic Panel Grid */}
+        <div className="grid md:grid-cols-2 gap-8 mb-20">
+          {comicPanels.map((panel, index) => (
+            <motion.div
+              key={panel.title}
+              initial={{ opacity: 0, scale: 0.8, rotate: 0 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, rotate: 0 }}
+              className={`comic-border bg-white p-6 rounded-2xl ${panel.rotation} hover:rotate-0 transition-all duration-300 cursor-pointer`}
+            >
+              <div className="flex items-start space-x-4">
+                <div className={`${panel.color} comic-border p-3 rounded-full`}>
+                  <panel.icon className="w-8 h-8 text-white" />
                 </div>
-                
-                {/* Hover effect line */}
-                <motion.div
-                  className={`h-1 bg-gradient-to-r ${feature.color} rounded-full mt-4 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
+                <div className="flex-1">
+                  <h3 className="comic-text text-xl text-gray-900 mb-3">
+                    {panel.title}
+                  </h3>
+                  <p className="comic-text text-gray-700">{panel.content}</p>
+                </div>
+              </div>
+              
+              {/* Comic panel number */}
+              <div className="absolute -top-3 -right-3 bg-red-500 comic-border rounded-full w-12 h-12 flex items-center justify-center">
+                <span className="comic-text text-white text-lg">{index + 1}</span>
+              </div>
+            </motion.div>
+          ))}
         </div>
 
-        {/* Call to action */}
+        {/* Superpowers Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <div className="speech-bubble inline-block">
+            <h3 className="comic-heading text-4xl text-gray-900">MY SUPERPOWERS</h3>
+            <p className="comic-text text-gray-600 mt-2">Check out these amazing abilities!</p>
+          </div>
+        </motion.div>
+
+        <div className="grid md:grid-cols-3 gap-8 mb-16">
+          {superpowers.map((power, index) => (
+            <motion.div
+              key={power.title}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.05, y: -10 }}
+              className="group"
+            >
+              <div className="comic-border bg-white p-6 rounded-2xl hover:shadow-2xl transition-all duration-300">
+                <div className={`${power.color} comic-border p-4 rounded-full w-20 h-20 mx-auto mb-4 group-hover:animate-bounce-custom`}>
+                  <power.icon className="w-12 h-12 text-white mx-auto" />
+                </div>
+                
+                <h4 className="comic-text text-xl text-gray-900 mb-3 text-center">
+                  {power.title}
+                </h4>
+                <p className="text-gray-600 mb-4 text-center">{power.description}</p>
+                
+                {/* Power Level Bar */}
+                <div className="space-y-2">
+                  <div className="flex justify-between items-center">
+                    <span className="comic-text text-sm">POWER LEVEL</span>
+                    <span className="comic-marker text-red-600">{power.level}%</span>
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-4 comic-border">
+                    <motion.div
+                      initial={{ width: 0 }}
+                      whileInView={{ width: `${power.level}%` }}
+                      transition={{ duration: 1.5, delay: 0.5 }}
+                      viewport={{ once: true }}
+                      className={`${power.color} h-full rounded-full flex items-center justify-end pr-2`}
+                    >
+                      <span className="comic-marker text-white text-xs">⚡</span>
+                    </motion.div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Skills Trading Cards */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-12"
+        >
+          <div className="comic-border-red bg-yellow-400 p-6 rounded-3xl transform rotate-1 inline-block">
+            <h3 className="comic-heading text-3xl text-black">SKILL COLLECTION</h3>
+            <p className="comic-text text-black">Gotta code 'em all!</p>
+          </div>
+        </motion.div>
+
+        <div className="flex flex-wrap justify-center gap-4 mb-16">
+          {['React ⚛️', 'TypeScript 💪', 'Next.js 🚀', 'Tailwind 🎨', 'Node.js 🟢', 'Git 📝', 'Figma 🎯', 'MongoDB 🍃'].map((skill, index) => (
+            <motion.div
+              key={skill}
+              initial={{ opacity: 0, scale: 0, rotate: -180 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              viewport={{ once: true }}
+              whileHover={{ 
+                scale: 1.2, 
+                rotate: [0, -5, 5, 0],
+                transition: { duration: 0.3 }
+              }}
+              className="comic-border bg-white px-6 py-3 rounded-full comic-text text-gray-800 cursor-pointer hover:bg-yellow-100 transition-colors duration-200"
+            >
+              {skill}
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -187,17 +231,21 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="glass-effect p-8 rounded-3xl border border-white/50 shadow-2xl max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Ready to Collaborate?</h3>
-            <p className="text-gray-600 mb-6">
-              I'm actively seeking internship opportunities where I can contribute my skills and grow as a developer.
+          <div className="comic-border-blue bg-white p-8 rounded-3xl max-w-2xl mx-auto transform -rotate-1">
+            <h3 className="comic-heading text-3xl text-gray-900 mb-4">READY FOR TEAM-UP?</h3>
+            <p className="comic-text text-gray-600 mb-6">
+              I'm seeking internship opportunities to join forces with amazing teams!
             </p>
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-2xl font-bold shadow-lg transition-all duration-300"
+              whileHover={{ 
+                scale: 1.1, 
+                rotate: [0, -2, 2, 0],
+                transition: { rotate: { duration: 0.3 } }
+              }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl hover:bg-red-600 transition-colors duration-200"
             >
-              Let's Connect
+              🚀 LET'S CONNECT!
             </motion.button>
           </div>
         </motion.div>

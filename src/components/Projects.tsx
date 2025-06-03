@@ -1,69 +1,97 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Eye, Star } from 'lucide-react';
+import { ExternalLink, Github, Eye, Star, Zap } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      title: "E-Commerce Platform",
-      description: "A modern e-commerce solution built with React and Node.js featuring real-time inventory management, secure payments, and responsive design.",
+      title: "SUPER E-COMMERCE",
+      subtitle: "The Shopping Hero's Platform",
+      description: "Built a powerful e-commerce platform that can handle any shopping mission! Features real-time inventory, secure payments, and responsive design that works faster than a speeding bullet!",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      tech: ["React", "Node.js", "MongoDB", "Stripe"],
+      tech: ["React ⚛️", "Node.js 🟢", "MongoDB 🍃", "Stripe 💳"],
       liveUrl: "#",
       githubUrl: "#",
       featured: true,
+      episode: "EP. 001",
+      difficulty: "EPIC",
       stats: { views: "2.5k", stars: "45" }
     },
     {
-      title: "Task Management App",
-      description: "Collaborative task management tool with drag-and-drop functionality, real-time updates, and team collaboration features.",
+      title: "TASK FORCE MANAGER",
+      subtitle: "The Ultimate Team Coordinator",
+      description: "Assembled a collaborative task management tool with drag-and-drop powers! Real-time updates keep the team synchronized better than any superhero squad!",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-      tech: ["Next.js", "TypeScript", "Prisma", "TailwindCSS"],
+      tech: ["Next.js 🚀", "TypeScript 💪", "Prisma ⚡", "TailwindCSS 🎨"],
       liveUrl: "#",
       githubUrl: "#",
       featured: false,
+      episode: "EP. 002",
+      difficulty: "LEGENDARY",
       stats: { views: "1.8k", stars: "32" }
     },
     {
-      title: "Weather Dashboard",
-      description: "Beautiful weather application with location-based forecasts, interactive maps, and detailed weather analytics.",
+      title: "WEATHER COMMAND CENTER",
+      subtitle: "The Climate Control Dashboard",
+      description: "Created a beautiful weather application with location-based forecasts and interactive maps! More accurate than any weather wizard's crystal ball!",
       image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
-      tech: ["React", "Chart.js", "OpenWeather API", "CSS3"],
+      tech: ["React ⚛️", "Chart.js 📊", "Weather API 🌤️", "CSS3 🎨"],
       liveUrl: "#",
       githubUrl: "#",
       featured: true,
+      episode: "EP. 003",
+      difficulty: "RARE",
       stats: { views: "3.2k", stars: "58" }
     },
     {
-      title: "Portfolio Website",
-      description: "Personal portfolio website with modern animations, responsive design, and optimized performance.",
+      title: "PORTFOLIO UNIVERSE",
+      subtitle: "The Ultimate Showcase",
+      description: "This very portfolio website! Built with modern animations, responsive design, and optimized performance. A true masterpiece of digital craftsmanship!",
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=600&h=400&fit=crop",
-      tech: ["React", "Framer Motion", "Tailwind", "Vite"],
+      tech: ["React ⚛️", "Framer Motion 🎬", "Tailwind 🎨", "Vite ⚡"],
       liveUrl: "#",
       githubUrl: "#",
       featured: false,
+      episode: "EP. 004",
+      difficulty: "ULTIMATE",
       stats: { views: "4.1k", stars: "72" }
     }
   ];
 
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'RARE': return 'bg-blue-500';
+      case 'EPIC': return 'bg-purple-500';
+      case 'LEGENDARY': return 'bg-orange-500';
+      case 'ULTIMATE': return 'bg-red-500';
+      default: return 'bg-green-500';
+    }
+  };
+
   return (
-    <section id="projects" className="py-32 bg-gradient-to-br from-white via-purple-50 to-blue-50 relative overflow-hidden">
-      {/* Background decorative elements */}
+    <section id="projects" className="py-20 bg-gradient-to-br from-green-200 via-blue-200 to-purple-200 relative overflow-hidden">
+      {/* Comic Background Elements */}
       <div className="absolute inset-0">
+        <div className="halftone-bg absolute inset-0"></div>
         <motion.div
-          animate={{ rotate: 360 }}
-          transition={{ duration: 50, repeat: Infinity, ease: "linear" }}
-          className="absolute top-1/4 left-10 w-2 h-2 bg-purple-400 rounded-full opacity-40"
-        />
+          animate={{ rotate: 360, scale: [1, 1.2, 1] }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+          className="absolute top-20 left-10 comic-marker text-9xl text-yellow-400 opacity-20"
+        >
+          💥
+        </motion.div>
         <motion.div
-          animate={{ rotate: -360 }}
-          transition={{ duration: 30, repeat: Infinity, ease: "linear" }}
-          className="absolute bottom-1/4 right-20 w-3 h-3 bg-blue-400 rounded-full opacity-40"
-        />
+          animate={{ rotate: -360, y: [0, -20, 0] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute bottom-20 right-20 comic-marker text-7xl text-red-400 opacity-20"
+        >
+          🚀
+        </motion.div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative">
+        {/* Comic Title */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -71,150 +99,155 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <motion.h2 
-            className="text-5xl md:text-6xl font-black text-gray-900 mb-8"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
-          >
-            Featured <span className="text-gradient">Projects</span>
-          </motion.h2>
+          <div className="comic-border-red bg-yellow-400 p-8 rounded-3xl transform rotate-1 inline-block">
+            <h2 className="comic-title text-black">
+              CODING ADVENTURES
+            </h2>
+            <div className="comic-marker text-2xl text-red-600 mt-2">
+              "Epic Projects & Heroic Solutions!"
+            </div>
+          </div>
+          
           <motion.div
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            initial={{ opacity: 0, scale: 0 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             viewport={{ once: true }}
-            className="w-24 h-1 bg-gradient-to-r from-purple-600 to-blue-600 mx-auto mb-8 rounded-full"
-          />
-          <motion.p 
-            className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            viewport={{ once: true }}
+            className="mt-8"
           >
-            A showcase of my recent work, demonstrating proficiency in modern web technologies 
-            and creative problem-solving abilities.
-          </motion.p>
+            <div className="speech-bubble max-w-2xl mx-auto">
+              <p className="comic-text text-gray-800">
+                Each project is an epic adventure showcasing different coding superpowers and creative solutions!
+              </p>
+            </div>
+          </motion.div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        {/* Project Episodes */}
+        <div className="grid lg:grid-cols-2 gap-8 mb-16">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 50, rotate: -5 }}
+              whileInView={{ opacity: 1, y: 0, rotate: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
-              whileHover={{ y: -15 }}
-              className={`group relative ${project.featured ? 'md:col-span-2 lg:col-span-1' : ''}`}
+              whileHover={{ scale: 1.02, y: -10, rotate: 0 }}
+              className="group relative"
             >
-              <div className="glass-effect rounded-3xl overflow-hidden shadow-2xl border border-white/50 hover:shadow-3xl transition-all duration-700">
-                {/* Project image with overlay */}
+              <div className="comic-border bg-white rounded-3xl overflow-hidden hover:shadow-2xl transition-all duration-500">
+                {/* Episode Header */}
+                <div className="bg-gradient-to-r from-red-500 to-blue-500 p-4 relative">
+                  <div className="flex justify-between items-center">
+                    <div className="comic-border bg-white px-4 py-2 rounded-full">
+                      <span className="comic-text text-black">{project.episode}</span>
+                    </div>
+                    <div className={`${getDifficultyColor(project.difficulty)} comic-border px-4 py-2 rounded-full`}>
+                      <span className="comic-text text-white">{project.difficulty}</span>
+                    </div>
+                  </div>
+                  
+                  {/* Featured Badge */}
+                  {project.featured && (
+                    <motion.div
+                      initial={{ scale: 0, rotate: -180 }}
+                      animate={{ scale: 1, rotate: 0 }}
+                      transition={{ delay: 0.5 + index * 0.1 }}
+                      className="absolute -top-2 -right-2 bg-yellow-400 comic-border rounded-full p-3"
+                    >
+                      <Star className="w-6 h-6 text-red-600" />
+                    </motion.div>
+                  )}
+                </div>
+
+                {/* Project Image */}
                 <div className="relative overflow-hidden h-64">
                   <motion.img
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    className="w-full h-full object-cover"
                     whileHover={{ scale: 1.1 }}
+                    transition={{ duration: 0.5 }}
                   />
                   
-                  {/* Featured badge */}
-                  {project.featured && (
-                    <motion.div
-                      initial={{ scale: 0 }}
-                      animate={{ scale: 1 }}
-                      transition={{ delay: 0.5 }}
-                      className="absolute top-4 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-white px-3 py-1 rounded-full text-sm font-bold shadow-lg flex items-center gap-1"
-                    >
-                      <Star className="w-4 h-4" />
-                      Featured
-                    </motion.div>
-                  )}
-                  
-                  {/* Overlay with stats */}
+                  {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <div className="absolute bottom-4 left-4 flex items-center space-x-4 text-white">
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-2 comic-border bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                         <Eye className="w-4 h-4" />
-                        <span className="text-sm font-medium">{project.stats.views}</span>
+                        <span className="comic-text text-sm">{project.stats.views}</span>
                       </div>
-                      <div className="flex items-center gap-1">
+                      <div className="flex items-center gap-2 comic-border bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
                         <Star className="w-4 h-4" />
-                        <span className="text-sm font-medium">{project.stats.stars}</span>
+                        <span className="comic-text text-sm">{project.stats.stars}</span>
                       </div>
                     </div>
                   </div>
                   
-                  {/* Action buttons */}
+                  {/* Action Buttons */}
                   <div className="absolute top-4 right-4 flex space-x-2 opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <motion.a
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
+                      whileHover={{ scale: 1.2, rotate: 360 }}
                       href={project.liveUrl}
-                      className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all duration-300"
+                      className="bg-green-500 comic-border p-3 rounded-full shadow-lg hover:bg-green-600"
                     >
-                      <ExternalLink className="w-5 h-5 text-gray-700" />
+                      <ExternalLink className="w-5 h-5 text-white" />
                     </motion.a>
                     <motion.a
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
+                      whileHover={{ scale: 1.2, rotate: -360 }}
                       href={project.githubUrl}
-                      className="bg-white/90 backdrop-blur-sm p-3 rounded-full shadow-lg hover:bg-white transition-all duration-300"
+                      className="bg-purple-500 comic-border p-3 rounded-full shadow-lg hover:bg-purple-600"
                     >
-                      <Github className="w-5 h-5 text-gray-700" />
+                      <Github className="w-5 h-5 text-white" />
                     </motion.a>
                   </div>
                 </div>
                 
-                {/* Project content */}
-                <div className="p-8">
-                  <motion.h3 
-                    className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-purple-700 transition-colors duration-300"
-                    whileHover={{ x: 5 }}
-                  >
-                    {project.title}
-                  </motion.h3>
-                  <p className="text-gray-600 mb-6 leading-relaxed">
-                    {project.description}
-                  </p>
+                {/* Project Content */}
+                <div className="p-6">
+                  <div className="mb-4">
+                    <h3 className="comic-heading text-2xl text-gray-900 mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="comic-text text-purple-600 mb-3">{project.subtitle}</p>
+                    <p className="text-gray-600 leading-relaxed">{project.description}</p>
+                  </div>
                   
-                  {/* Tech stack */}
+                  {/* Tech Stack */}
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech, techIndex) => (
                       <motion.span
                         key={tech}
-                        initial={{ opacity: 0, scale: 0.8 }}
+                        initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: techIndex * 0.1 }}
-                        whileHover={{ scale: 1.05 }}
-                        className="bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 px-3 py-1 rounded-full text-sm font-semibold border border-purple-200"
+                        whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
+                        className="comic-border bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-3 py-1 rounded-full comic-text text-sm cursor-pointer"
                       >
                         {tech}
                       </motion.span>
                     ))}
                   </div>
                   
-                  {/* Project links */}
+                  {/* Action Buttons */}
                   <div className="flex space-x-4">
                     <motion.a
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
                       whileTap={{ scale: 0.95 }}
                       href={project.liveUrl}
-                      className="flex items-center gap-2 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-xl font-semibold text-sm hover:shadow-lg transition-all duration-300"
+                      className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 comic-border rounded-xl comic-text hover:bg-blue-600 transition-colors duration-200"
                     >
-                      <ExternalLink className="w-4 h-4" />
-                      Live Demo
+                      <Zap className="w-4 h-4" />
+                      LIVE DEMO
                     </motion.a>
                     <motion.a
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
                       whileTap={{ scale: 0.95 }}
                       href={project.githubUrl}
-                      className="flex items-center gap-2 border-2 border-gray-300 text-gray-700 px-4 py-2 rounded-xl font-semibold text-sm hover:bg-gray-50 transition-all duration-300"
+                      className="flex items-center gap-2 comic-border bg-white text-gray-700 px-4 py-2 rounded-xl comic-text hover:bg-gray-50 transition-colors duration-200"
                     >
                       <Github className="w-4 h-4" />
-                      Code
+                      SOURCE
                     </motion.a>
                   </div>
                 </div>
@@ -223,7 +256,7 @@ const Projects = () => {
           ))}
         </div>
 
-        {/* Call to action */}
+        {/* Coming Soon Section */}
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -231,17 +264,26 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center"
         >
-          <div className="glass-effect p-8 rounded-3xl border border-white/50 shadow-2xl max-w-2xl mx-auto">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">More Projects Coming Soon</h3>
-            <p className="text-gray-600 mb-6">
-              I'm constantly working on new projects and experimenting with cutting-edge technologies.
+          <div className="comic-border-blue bg-white p-8 rounded-3xl max-w-2xl mx-auto transform -rotate-1">
+            <motion.div
+              animate={{ rotate: [0, 5, -5, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            >
+              <h3 className="comic-heading text-3xl text-gray-900 mb-4">MORE ADVENTURES COMING!</h3>
+            </motion.div>
+            <p className="comic-text text-gray-600 mb-6">
+              I'm constantly working on new epic projects and experimenting with cutting-edge technologies!
             </p>
             <motion.button
-              whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(139, 92, 246, 0.3)" }}
-              whileTap={{ scale: 0.95 }}
-              className="bg-gradient-to-r from-purple-600 to-blue-600 text-white px-8 py-4 rounded-2xl font-bold shadow-lg transition-all duration-300"
+              whileHover={{ 
+                scale: 1.1, 
+                boxShadow: "0 20px 40px rgba(255, 0, 0, 0.4)",
+                rotate: [0, -2, 2, 0]
+              }}
+              whileTap={{ scale: 0.9 }}
+              className="bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl hover:bg-red-600 transition-colors duration-200"
             >
-              View All Projects
+              🚀 VIEW ALL ADVENTURES
             </motion.button>
           </div>
         </motion.div>
