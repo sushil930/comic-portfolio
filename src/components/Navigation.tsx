@@ -31,16 +31,16 @@ const Navigation = () => {
           : 'bg-yellow-300/90 backdrop-blur-sm comic-border'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-3">
+      <div className="max-w-7xl mx-auto px-4 py-2">
         <div className="flex justify-between items-center">
           <motion.div
             whileHover={{ scale: 1.1, rotate: [-2, 2, -2, 0] }}
-            className="comic-title text-3xl text-red-600 transform -rotate-2"
+            className="comic-title text-xl md:text-2xl text-red-600 transform -rotate-2"
           >
             Portfolio
           </motion.div>
           
-          <div className="hidden md:flex space-x-2">
+          <div className="hidden md:flex space-x-1">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
@@ -49,11 +49,11 @@ const Navigation = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 whileHover={{ 
-                  scale: 1.1,
-                  rotate: [0, -5, 5, 0],
+                  scale: 1.05,
+                  rotate: [0, -3, 3, 0],
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white comic-border px-4 py-2 rounded-full comic-text text-gray-800 hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-110"
+                className="bg-white comic-border px-3 py-1 rounded-full comic-text text-sm text-gray-800 hover:bg-blue-500 hover:text-white transition-all duration-300"
               >
                 {item.name}
               </motion.a>
@@ -62,12 +62,12 @@ const Navigation = () => {
           
           <motion.button
             whileHover={{ 
-              scale: 1.1,
-              rotate: [0, -5, 5, 0],
+              scale: 1.05,
+              rotate: [0, -3, 3, 0],
               transition: { duration: 0.3 }
             }}
             whileTap={{ scale: 0.9 }}
-            className="hidden md:block bg-red-500 text-white px-6 py-3 comic-border-red rounded-full comic-text hover:bg-yellow-400 hover:text-black transition-all duration-300"
+            className="hidden md:block bg-red-500 text-white px-4 py-2 comic-border-red rounded-full comic-text text-sm hover:bg-yellow-400 hover:text-black transition-all duration-300"
           >
             💼 Hire Me
           </motion.button>
@@ -78,10 +78,10 @@ const Navigation = () => {
             whileTap={{ scale: 0.9 }}
             className="md:hidden bg-red-500 text-white p-2 comic-border rounded-full"
           >
-            <div className="w-6 h-6 flex flex-col justify-center items-center">
-              <span className="block w-4 h-0.5 bg-white mb-1"></span>
-              <span className="block w-4 h-0.5 bg-white mb-1"></span>
-              <span className="block w-4 h-0.5 bg-white"></span>
+            <div className="w-5 h-5 flex flex-col justify-center items-center">
+              <span className="block w-3 h-0.5 bg-white mb-1"></span>
+              <span className="block w-3 h-0.5 bg-white mb-1"></span>
+              <span className="block w-3 h-0.5 bg-white"></span>
             </div>
           </motion.button>
         </div>

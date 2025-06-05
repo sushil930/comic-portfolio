@@ -33,7 +33,7 @@ const Hero = () => {
   ];
 
   return (
-    <section id="hero" className="min-h-screen pt-24 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-yellow-300 via-red-200 to-blue-300">
+    <section id="hero" className="min-h-screen pt-16 md:pt-20 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-yellow-300 via-red-200 to-blue-300">
       {/* Comic Background Elements */}
       <div className="absolute inset-0">
         {/* Halftone Pattern */}
@@ -104,21 +104,21 @@ const Hero = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="space-y-12"
+          className="space-y-8 md:space-y-12"
         >
           {/* Comic Title */}
-          <motion.div variants={itemVariants} className="space-y-8">
+          <motion.div variants={itemVariants} className="space-y-6 md:space-y-8">
             <motion.div
               initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 1.2, ease: [0.68, -0.55, 0.265, 1.55] }}
               className="relative"
             >
-              <div className="comic-border-yellow bg-white p-8 rounded-3xl transform rotate-1">
-                <h1 className="comic-title text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-blue-600 to-green-600">
+              <div className="comic-border-yellow bg-white p-4 md:p-8 rounded-3xl transform rotate-1">
+                <h1 className="comic-title text-4xl md:text-6xl lg:text-8xl text-transparent bg-clip-text bg-gradient-to-r from-red-600 via-blue-600 to-green-600">
                   THE AMAZING
                 </h1>
-                <h2 className="comic-title text-4xl md:text-6xl text-purple-800 mt-2">
+                <h2 className="comic-title text-2xl md:text-4xl lg:text-6xl text-purple-800 mt-2">
                   FRONTEND HERO
                 </h2>
               </div>
@@ -127,10 +127,10 @@ const Hero = () => {
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
-                className="absolute -top-4 -right-4 w-16 h-16"
+                className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-12 h-12 md:w-16 md:h-16"
               >
                 <div className="w-full h-full bg-yellow-400 rounded-full comic-border flex items-center justify-center">
-                  <span className="comic-marker text-2xl">⚡</span>
+                  <span className="comic-marker text-xl md:text-2xl">⚡</span>
                 </div>
               </motion.div>
             </motion.div>
@@ -140,17 +140,17 @@ const Hero = () => {
               variants={itemVariants}
               className="speech-bubble max-w-2xl mx-auto"
             >
-              <p className="comic-text text-2xl text-gray-800">
+              <p className="comic-text text-lg md:text-2xl text-gray-800">
                 "A Frontend Web Hero in the Making! 🦸‍♂️"
               </p>
-              <p className="comic-text text-lg text-gray-600 mt-2">
+              <p className="comic-text text-sm md:text-lg text-gray-600 mt-2">
                 Crafting digital experiences with code superpowers!
               </p>
             </motion.div>
           </motion.div>
 
           {/* Comic Action Buttons */}
-          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
             <motion.button
               whileHover={{ 
                 scale: 1.1, 
@@ -158,7 +158,7 @@ const Hero = () => {
                 transition: { rotate: { duration: 0.3 } }
               }}
               whileTap={{ scale: 0.9 }}
-              className="group relative bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
+              className="group relative bg-red-500 text-white px-6 md:px-8 py-3 md:py-4 comic-border-red rounded-2xl comic-text text-lg md:text-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
             >
               <span className="relative z-10">🚀 EXPLORE MY SUPERPOWERS</span>
               <motion.div
@@ -176,7 +176,7 @@ const Hero = () => {
                 transition: { rotate: { duration: 0.3 } }
               }}
               whileTap={{ scale: 0.9 }}
-              className="bg-blue-500 text-white px-8 py-4 comic-border-blue rounded-2xl comic-text text-xl transform rotate-1 hover:rotate-0 transition-transform duration-300"
+              className="bg-blue-500 text-white px-6 md:px-8 py-3 md:py-4 comic-border-blue rounded-2xl comic-text text-lg md:text-xl transform rotate-1 hover:rotate-0 transition-transform duration-300"
             >
               📜 DOWNLOAD ORIGIN STORY
             </motion.button>
