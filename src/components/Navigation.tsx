@@ -27,20 +27,20 @@ const Navigation = () => {
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'bg-white/80 backdrop-blur-lg shadow-lg border-b border-gray-200/50' 
-          : 'bg-transparent'
+          ? 'bg-white/95 backdrop-blur-md comic-border-yellow shadow-xl' 
+          : 'bg-yellow-300/90 backdrop-blur-sm comic-border'
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 py-4">
+      <div className="max-w-7xl mx-auto px-6 py-3">
         <div className="flex justify-between items-center">
           <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold text-gradient"
+            whileHover={{ scale: 1.1, rotate: [-2, 2, -2, 0] }}
+            className="comic-title text-3xl text-red-600 transform -rotate-2"
           >
             Portfolio
           </motion.div>
           
-          <div className="hidden md:flex space-x-8">
+          <div className="hidden md:flex space-x-2">
             {navItems.map((item, index) => (
               <motion.a
                 key={item.name}
@@ -48,21 +48,41 @@ const Navigation = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -2 }}
-                className="text-gray-700 hover:text-purple-600 transition-all duration-300 font-medium relative group"
+                whileHover={{ 
+                  scale: 1.1,
+                  rotate: [0, -5, 5, 0],
+                  transition: { duration: 0.3 }
+                }}
+                className="bg-white comic-border px-4 py-2 rounded-full comic-text text-gray-800 hover:bg-blue-500 hover:text-white transition-all duration-300 transform hover:scale-110"
               >
                 {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-purple-600 transition-all duration-300 group-hover:w-full"></span>
               </motion.a>
             ))}
           </div>
           
           <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="hidden md:block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-all duration-300"
+            whileHover={{ 
+              scale: 1.1,
+              rotate: [0, -5, 5, 0],
+              transition: { duration: 0.3 }
+            }}
+            whileTap={{ scale: 0.9 }}
+            className="hidden md:block bg-red-500 text-white px-6 py-3 comic-border-red rounded-full comic-text hover:bg-yellow-400 hover:text-black transition-all duration-300"
           >
-            Hire Me
+            💼 Hire Me
+          </motion.button>
+
+          {/* Mobile menu button */}
+          <motion.button
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            className="md:hidden bg-red-500 text-white p-2 comic-border rounded-full"
+          >
+            <div className="w-6 h-6 flex flex-col justify-center items-center">
+              <span className="block w-4 h-0.5 bg-white mb-1"></span>
+              <span className="block w-4 h-0.5 bg-white mb-1"></span>
+              <span className="block w-4 h-0.5 bg-white"></span>
+            </div>
           </motion.button>
         </div>
       </div>

@@ -33,7 +33,7 @@ const Hero = () => {
   ];
 
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-yellow-300 via-red-200 to-blue-300">
+    <section id="hero" className="min-h-screen pt-24 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-yellow-300 via-red-200 to-blue-300">
       {/* Comic Background Elements */}
       <div className="absolute inset-0">
         {/* Halftone Pattern */}
@@ -54,7 +54,7 @@ const Hero = () => {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 0.3, scale: 1 }}
           transition={{ delay: 1, duration: 0.8 }}
-          className="absolute top-20 left-20 comic-marker text-6xl text-red-600 rotate-12"
+          className="absolute top-32 left-20 comic-marker text-6xl text-red-600 rotate-12"
         >
           POW!
         </motion.div>
@@ -87,7 +87,7 @@ const Hero = () => {
             }}
             className="absolute"
             style={{
-              top: `${20 + index * 20}%`,
+              top: `${25 + index * 15}%`,
               left: `${10 + index * 25}%`,
               transform: `translate(${element.x}px, ${element.y}px)`
             }}
