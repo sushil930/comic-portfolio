@@ -111,7 +111,7 @@ const Hero = () => {
             <motion.div
               initial={{ opacity: 0, scale: 0.5, rotate: -10 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 1.2, ease: "back.out(1.7)" }}
+              transition={{ duration: 1.2, ease: [0.68, -0.55, 0.265, 1.55] }}
               className="relative"
             >
               <div className="comic-border-yellow bg-white p-8 rounded-3xl transform rotate-1">
@@ -195,7 +195,7 @@ const Hero = () => {
                 transition={{ 
                   delay: 2 + index * 0.1,
                   duration: 0.6,
-                  ease: "back.out(1.7)"
+                  ease: [0.68, -0.55, 0.265, 1.55]
                 }}
                 whileHover={{ 
                   scale: 1.2, 
@@ -223,7 +223,7 @@ const Hero = () => {
                 key={stat.label}
                 initial={{ opacity: 0, scale: 0.5 }}
                 animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 2.5 + index * 0.2, duration: 0.6, ease: "back.out(1.7)" }}
+                transition={{ delay: 2.5 + index * 0.2, duration: 0.6, ease: [0.68, -0.55, 0.265, 1.55] }}
                 whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
                 className="text-center"
               >
