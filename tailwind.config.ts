@@ -11,6 +11,11 @@ export default {
 	],
 	prefix: "",
 	theme: {
+    fontFamily: {
+      heading: ['Bangers', 'cursive'],
+      body: ['Comic Neue', 'sans-serif'],
+      sans: ['Poppins', 'sans-serif']
+    },
 		container: {
 			center: true,
 			padding: '2rem',

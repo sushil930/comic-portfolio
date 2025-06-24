@@ -25,12 +25,7 @@ const Hero = () => {
     }
   };
 
-  const floatingElements = [
-    { icon: 'mdi:code-tags', delay: 0, x: -20, y: -30, color: "bg-yellow-400" },
-    { icon: 'mdi:sword', delay: 0.5, x: 40, y: -20, color: "bg-red-500" },
-    { icon: 'mdi:flash', delay: 1, x: -30, y: 20, color: "bg-blue-500" },
-    { icon: 'mdi:star', delay: 1.5, x: 50, y: 30, color: "bg-green-500" },
-  ];
+
 
   return (
     <section id="hero" className="min-h-screen pt-16 md:pt-20 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-yellow-300 via-red-200 to-blue-300">
@@ -68,35 +63,7 @@ const Hero = () => {
           ZAP!
         </motion.div>
         
-        {/* Floating Comic Elements */}
-        {floatingElements.map((element, index) => (
-          <motion.div
-            key={index}
-            initial={{ opacity: 0, scale: 0, rotate: 0 }}
-            animate={{ 
-              opacity: [0.7, 1, 0.7],
-              scale: [1, 1.2, 1],
-              rotate: [0, 360],
-              y: [0, -20, 0]
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              delay: element.delay,
-              ease: "easeInOut"
-            }}
-            className="absolute"
-            style={{
-              top: `${25 + index * 15}%`,
-              left: `${10 + index * 25}%`,
-              transform: `translate(${element.x}px, ${element.y}px)`
-            }}
-          >
-            <div className={`${element.color} p-4 rounded-full comic-border animate-bounce-custom`}>
-              <Icon icon={element.icon} className="w-8 h-8 text-white" />
-            </div>
-          </motion.div>
-        ))}
+
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">

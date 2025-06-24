@@ -34,7 +34,7 @@ const Navigation = () => {
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 glassmorphism ${
         isScrolled 
           ? 'bg-white/95 backdrop-blur-md comic-border-yellow shadow-xl' 
           : 'bg-yellow-300/90 backdrop-blur-sm comic-border'
