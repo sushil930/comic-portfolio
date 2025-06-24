@@ -4,6 +4,7 @@ import AnimatedButton from './ui/AnimatedButton';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleScroll = useCallback(() => {
     setIsScrolled(window.scrollY > 50);
@@ -71,6 +72,7 @@ const Navigation = () => {
           <AnimatedButton
             className="md:hidden bg-red-500 text-white p-1 comic-border rounded-full"
             aria-label="Toggle mobile menu"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             <div className="w-4 h-4 flex flex-col justify-center items-center">
               <span className="block w-2 h-0.5 bg-white mb-0.5"></span>
@@ -80,6 +82,31 @@ const Navigation = () => {
           </AnimatedButton>
         </div>
       </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden"
+        >
+          <div className="px-4 pt-2 pb-4 space-y-2 bg-white/95 backdrop-blur-md">
+            {navItems.map((item) => (
+              <AnimatedButton
+                key={item.name}
+                onClick={() => {
+                  scrollToSection(item.href);
+                  setIsMobileMenuOpen(false);
+                }}
+                className="block w-full text-left bg-transparent comic-border px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
+              >
+                {item.name}
+              </AnimatedButton>
+            ))}
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   );
 };
