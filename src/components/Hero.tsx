@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowDown, Code, Sparkles, Zap, Star } from 'lucide-react';
+import { Icon } from '@iconify/react';
+import AnimatedButton from './ui/AnimatedButton';
 
 const Hero = () => {
   const containerVariants = {
@@ -26,10 +26,10 @@ const Hero = () => {
   };
 
   const floatingElements = [
-    { icon: Code, delay: 0, x: -20, y: -30, color: "bg-yellow-400" },
-    { icon: Sparkles, delay: 0.5, x: 40, y: -20, color: "bg-red-500" },
-    { icon: Zap, delay: 1, x: -30, y: 20, color: "bg-blue-500" },
-    { icon: Star, delay: 1.5, x: 50, y: 30, color: "bg-green-500" },
+    { icon: 'mdi:code-tags', delay: 0, x: -20, y: -30, color: "bg-yellow-400" },
+    { icon: 'mdi:sword', delay: 0.5, x: 40, y: -20, color: "bg-red-500" },
+    { icon: 'mdi:flash', delay: 1, x: -30, y: 20, color: "bg-blue-500" },
+    { icon: 'mdi:star', delay: 1.5, x: 50, y: 30, color: "bg-green-500" },
   ];
 
   return (
@@ -93,7 +93,7 @@ const Hero = () => {
             }}
           >
             <div className={`${element.color} p-4 rounded-full comic-border animate-bounce-custom`}>
-              <element.icon className="w-8 h-8 text-white" />
+              <Icon icon={element.icon} className="w-8 h-8 text-white" />
             </div>
           </motion.div>
         ))}
@@ -130,7 +130,7 @@ const Hero = () => {
                 className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-12 h-12 md:w-16 md:h-16"
               >
                 <div className="w-full h-full bg-yellow-400 rounded-full comic-border flex items-center justify-center">
-                  <span className="comic-marker text-xl md:text-2xl">⚡</span>
+                  <Icon icon="mdi:flash" className="comic-marker text-xl md:text-2xl text-red-600" />
                 </div>
               </motion.div>
             </motion.div>
@@ -151,13 +151,7 @@ const Hero = () => {
 
           {/* Comic Action Buttons */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
-            <motion.button
-              whileHover={{ 
-                scale: 1.1, 
-                rotate: [-2, 2, -2, 0],
-                transition: { rotate: { duration: 0.3 } }
-              }}
-              whileTap={{ scale: 0.9 }}
+            <AnimatedButton
               className="group relative bg-red-500 text-white px-6 md:px-8 py-3 md:py-4 comic-border-red rounded-2xl comic-text text-lg md:text-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
             >
               <span className="relative z-10">🚀 EXPLORE MY SUPERPOWERS</span>
@@ -167,19 +161,13 @@ const Hero = () => {
                 whileHover={{ scale: 1 }}
                 transition={{ duration: 0.2 }}
               />
-            </motion.button>
+            </AnimatedButton>
             
-            <motion.button
-              whileHover={{ 
-                scale: 1.1,
-                rotate: [2, -2, 2, 0],
-                transition: { rotate: { duration: 0.3 } }
-              }}
-              whileTap={{ scale: 0.9 }}
+            <AnimatedButton
               className="bg-blue-500 text-white px-6 md:px-8 py-3 md:py-4 comic-border-blue rounded-2xl comic-text text-lg md:text-xl transform rotate-1 hover:rotate-0 transition-transform duration-300"
             >
               📜 DOWNLOAD ORIGIN STORY
-            </motion.button>
+            </AnimatedButton>
           </motion.div>
 
           {/* Tech Stack Badges */}
@@ -187,9 +175,15 @@ const Hero = () => {
             variants={itemVariants}
             className="flex justify-center flex-wrap gap-4 pt-8"
           >
-            {['React ⚛️', 'TypeScript 💪', 'Next.js 🚀', 'Tailwind 🎨', 'Node.js 🟢'].map((tech, index) => (
+            {[
+              { name: 'React', icon: 'logos:react' },
+              { name: 'TypeScript', icon: 'logos:typescript-icon' },
+              { name: 'Next.js', icon: 'logos:nextjs-icon' },
+              { name: 'Tailwind', icon: 'logos:tailwindcss-icon' },
+              { name: 'Node.js', icon: 'logos:nodejs-icon' }
+            ].map((tech, index) => (
               <motion.div
-                key={tech}
+                key={tech.name}
                 initial={{ opacity: 0, y: 30, rotate: -90 }}
                 animate={{ opacity: 1, y: 0, rotate: 0 }}
                 transition={{ 
@@ -202,9 +196,10 @@ const Hero = () => {
                   rotate: [0, -5, 5, 0],
                   transition: { duration: 0.3 }
                 }}
-                className="bg-white comic-border px-4 py-2 rounded-full comic-text text-gray-800 cursor-pointer transform hover:scale-110 transition-all duration-200"
+                className="bg-white comic-border px-4 py-2 rounded-full comic-text text-gray-800 cursor-pointer transform hover:scale-110 transition-all duration-200 flex items-center gap-2"
               >
-                {tech}
+                <Icon icon={tech.icon} className="w-5 h-5" />
+                {tech.name}
               </motion.div>
             ))}
           </motion.div>
@@ -251,7 +246,7 @@ const Hero = () => {
         >
           <div className="speech-bubble">
             <p className="comic-text text-sm text-gray-800 mb-2">SCROLL FOR MORE!</p>
-            <ArrowDown className="w-6 h-6 text-red-600 mx-auto animate-bounce" />
+            <Icon icon="mdi:arrow-down" className="w-6 h-6 text-red-600 mx-auto animate-bounce" />
           </div>
         </motion.div>
       </motion.div>

@@ -1,50 +1,49 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Zap, Star, Trophy } from 'lucide-react';
+import { Icon } from '@iconify/react';
 
 const Skills = () => {
   const skillCategories = [
     {
       title: "FRONTEND POWERS",
-      icon: "🎨",
+      icon: "mdi:palette",
       color: "from-red-500 to-pink-500",
       skills: [
-        { name: "React ⚛️", level: 90, xp: "2,450 XP" },
-        { name: "TypeScript 💪", level: 85, xp: "2,100 XP" },
-        { name: "Next.js 🚀", level: 80, xp: "1,850 XP" },
-        { name: "Tailwind 🎨", level: 95, xp: "2,700 XP" }
+        { name: "React", icon: "logos:react", level: 90, xp: "2,450 XP" },
+        { name: "TypeScript", icon: "logos:typescript-icon", level: 85, xp: "2,100 XP" },
+        { name: "Next.js", icon: "logos:nextjs-icon", level: 80, xp: "1,850 XP" },
+        { name: "Tailwind", icon: "logos:tailwindcss-icon", level: 95, xp: "2,700 XP" }
       ]
     },
     {
       title: "BACKEND ABILITIES",
-      icon: "⚙️",
+      icon: "mdi:cog",
       color: "from-blue-500 to-cyan-500",
       skills: [
-        { name: "Node.js 🟢", level: 75, xp: "1,650 XP" },
-        { name: "Express ⚡", level: 70, xp: "1,500 XP" },
-        { name: "MongoDB 🍃", level: 65, xp: "1,350 XP" },
-        { name: "PostgreSQL 🐘", level: 60, xp: "1,200 XP" }
+        { name: "Node.js", icon: "logos:nodejs-icon", level: 75, xp: "1,650 XP" },
+        { name: "Express", icon: "logos:express", level: 70, xp: "1,500 XP" },
+        { name: "MongoDB", icon: "logos:mongodb-icon", level: 65, xp: "1,350 XP" },
+        { name: "PostgreSQL", icon: "logos:postgresql", level: 60, xp: "1,200 XP" }
       ]
     },
     {
       title: "HERO TOOLS",
-      icon: "🛠️",
+      icon: "mdi:tools",
       color: "from-purple-500 to-indigo-500",
       skills: [
-        { name: "Git 📝", level: 85, xp: "2,000 XP" },
-        { name: "Figma 🎯", level: 80, xp: "1,800 XP" },
-        { name: "Docker 🐳", level: 55, xp: "1,000 XP" },
-        { name: "AWS ☁️", level: 50, xp: "900 XP" }
+        { name: "Git", icon: "logos:git-icon", level: 85, xp: "2,000 XP" },
+        { name: "Figma", icon: "logos:figma", level: 80, xp: "1,800 XP" },
+        { name: "Docker", icon: "logos:docker-icon", level: 55, xp: "1,000 XP" },
+        { name: "AWS", icon: "logos:aws", level: 50, xp: "900 XP" }
       ]
     }
   ];
 
   const achievements = [
-    { title: "Code Warrior", description: "Wrote 10,000+ lines of code", icon: "⚔️", rarity: "LEGENDARY" },
-    { title: "Bug Hunter", description: "Squashed 500+ bugs", icon: "🐛", rarity: "EPIC" },
-    { title: "Speed Coder", description: "Completed project in record time", icon: "⚡", rarity: "RARE" },
-    { title: "Team Player", description: "Collaborated on 20+ projects", icon: "🤝", rarity: "UNCOMMON" }
+    { title: "Code Warrior", description: "Wrote 10,000+ lines of code", icon: "mdi:sword", rarity: "LEGENDARY" },
+    { title: "Bug Hunter", description: "Squashed 500+ bugs", icon: "mdi:bug", rarity: "EPIC" },
+    { title: "Speed Coder", description: "Completed project in record time", icon: "mdi:flash", rarity: "RARE" },
+    { title: "Team Player", description: "Collaborated on 20+ projects", icon: "mdi:handshake", rarity: "UNCOMMON" }
   ];
 
   const getRarityColor = (rarity: string) => {
@@ -54,6 +53,16 @@ const Skills = () => {
       case 'RARE': return 'bg-gradient-to-r from-blue-500 to-cyan-500';
       case 'UNCOMMON': return 'bg-gradient-to-r from-green-500 to-emerald-500';
       default: return 'bg-gray-500';
+    }
+  };
+
+  const getRarityIconColor = (rarity: string) => {
+    switch (rarity) {
+      case 'LEGENDARY': return 'text-yellow-500';
+      case 'EPIC': return 'text-purple-500';
+      case 'RARE': return 'text-blue-500';
+      case 'UNCOMMON': return 'text-green-500';
+      default: return 'text-gray-500';
     }
   };
 
@@ -134,7 +143,7 @@ const Skills = () => {
               <div className="comic-border bg-white p-6 rounded-3xl hover:shadow-2xl transition-all duration-300">
                 {/* Category Header */}
                 <div className={`bg-gradient-to-r ${category.color} comic-border p-4 rounded-2xl mb-6 text-center`}>
-                  <div className="text-4xl mb-2">{category.icon}</div>
+                  <div className="text-4xl mb-2"><Icon icon={category.icon} className="inline-block" /></div>
                   <h3 className="comic-heading text-2xl text-white">
                     {category.title}
                   </h3>
@@ -147,7 +156,10 @@ const Skills = () => {
                     return (
                       <div key={skill.name} className="space-y-2">
                         <div className="flex justify-between items-center">
-                          <span className="comic-text text-gray-800">{skill.name}</span>
+                          <span className="comic-text text-gray-800 flex items-center gap-2">
+                            <Icon icon={skill.icon} className="w-5 h-5" />
+                            {skill.name}
+                          </span>
                           <div className="text-right">
                             <span className={`comic-marker text-sm ${powerLevel.color}`}>
                               {powerLevel.text}
@@ -198,7 +210,7 @@ const Skills = () => {
                               transition={{ duration: 2, repeat: Infinity }}
                               className="absolute -right-2 top-1/2 transform -translate-y-1/2 text-yellow-400"
                             >
-                              <Zap className="w-4 h-4" />
+                              <Icon icon="mdi:flash" className="w-4 h-4" />
                             </motion.div>
                           )}
                         </div>
@@ -244,22 +256,16 @@ const Skills = () => {
                 
                 {/* Achievement Icon */}
                 <div className="text-6xl mb-4 group-hover:animate-bounce-custom">
-                  {achievement.icon}
+                  <Icon icon={achievement.icon} className={`inline-block ${getRarityIconColor(achievement.rarity)}`} />
                 </div>
                 
                 {/* Achievement Info */}
                 <h4 className="comic-text text-xl text-gray-900 mb-2">
                   {achievement.title}
                 </h4>
-                <p className="text-gray-600 text-sm">{achievement.description}</p>
-                
-                {/* Shine Effect */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  whileHover={{ opacity: [0, 1, 0] }}
-                  transition={{ duration: 0.5 }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-2xl"
-                />
+                <p className="text-gray-600 text-sm">
+                  {achievement.description}
+                </p>
               </div>
             </motion.div>
           ))}
@@ -280,17 +286,25 @@ const Skills = () => {
             </p>
             
             <div className="flex flex-wrap justify-center gap-4">
-              {['GraphQL 🚀', 'React Native 📱', 'Three.js 🎮', 'WebGL ✨', 'Rust 🦀', 'Go 🐹'].map((tech, index) => (
+              {[
+                { name: 'GraphQL', icon: 'logos:graphql' },
+                { name: 'React Native', icon: 'logos:react' },
+                { name: 'Three.js', icon: 'logos:threejs' },
+                { name: 'WebGL', icon: 'mdi:webgl' },
+                { name: 'Rust', icon: 'logos:rust' },
+                { name: 'Go', icon: 'logos:go' }
+              ].map((tech, index) => (
                 <motion.span
-                  key={tech}
+                  key={tech.name}
                   initial={{ opacity: 0, scale: 0 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
                   whileHover={{ scale: 1.1, rotate: [0, -10, 10, 0] }}
-                  className="comic-border bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 px-4 py-2 rounded-full comic-text cursor-pointer hover:from-purple-200 hover:to-blue-200 transition-all duration-200"
+                  className="comic-border bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 px-4 py-2 rounded-full comic-text cursor-pointer hover:from-purple-200 hover:to-blue-200 transition-all duration-200 flex items-center gap-2"
                 >
-                  {tech}
+                  <Icon icon={tech.icon} className="w-5 h-5" />
+                  {tech.name}
                 </motion.span>
               ))}
             </div>

@@ -1,7 +1,7 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, MapPin, Phone } from 'lucide-react';
+import { Icon } from '@iconify/react';
+import AnimatedButton from './ui/AnimatedButton';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -25,21 +25,21 @@ const Contact = () => {
 
   const contactMethods = [
     {
-      icon: Mail,
+      icon: 'mdi:email',
       title: "Email Mission",
       value: "hero@frontend.dev",
       description: "Send me a digital message!",
       color: "bg-red-500"
     },
     {
-      icon: MapPin,
+      icon: 'mdi:map-marker',
       title: "Hero Base",
       value: "Remote Worldwide",
       description: "Available for remote adventures!",
       color: "bg-blue-500"
     },
     {
-      icon: Phone,
+      icon: 'mdi:phone',
       title: "Direct Line",
       value: "+1 (555) HERO-DEV",
       description: "For urgent coding emergencies!",
@@ -126,7 +126,7 @@ const Contact = () => {
                   <div className="comic-border bg-white p-6 rounded-2xl hover:shadow-2xl transition-all duration-300">
                     <div className="flex items-center space-x-4">
                       <div className={`${method.color} comic-border p-4 rounded-full group-hover:animate-bounce-custom`}>
-                        <method.icon className="w-8 h-8 text-white" />
+                        <Icon icon={method.icon} className="w-8 h-8 text-white" />
                       </div>
                       <div className="flex-1">
                         <h3 className="comic-text text-xl text-gray-900 mb-1">
@@ -178,10 +178,10 @@ const Contact = () => {
               <h4 className="comic-text text-xl text-gray-900 mb-4">FIND ME IN THE DIGITAL UNIVERSE</h4>
               <div className="flex justify-center space-x-4">
                 {[
-                  { name: 'GitHub', icon: '🐙', url: '#' },
-                  { name: 'LinkedIn', icon: '💼', url: '#' },
-                  { name: 'Twitter', icon: '🐦', url: '#' },
-                  { name: 'Portfolio', icon: '🌟', url: '#' }
+                  { name: 'GitHub', icon: 'mdi:github', url: '#', color: 'text-gray-800' },
+                  { name: 'LinkedIn', icon: 'mdi:linkedin', url: '#', color: 'text-blue-700' },
+                  { name: 'Twitter', icon: 'mdi:twitter', url: '#', color: 'text-blue-400' },
+                  { name: 'Portfolio', icon: 'mdi:star', url: '#', color: 'text-yellow-400' }
                 ].map((social, index) => (
                   <motion.a
                     key={social.name}
@@ -190,7 +190,7 @@ const Contact = () => {
                     href={social.url}
                     className="comic-border bg-white p-4 rounded-full text-4xl hover:shadow-lg transition-all duration-200"
                   >
-                    {social.icon}
+                    <Icon icon={social.icon} className={`text-4xl ${social.color}`} />
                   </motion.a>
                 ))}
               </div>
@@ -265,19 +265,13 @@ const Contact = () => {
                   />
                 </div>
 
-                <motion.button
+                <AnimatedButton
                   type="submit"
-                  whileHover={{ 
-                    scale: 1.05, 
-                    boxShadow: "0 20px 40px rgba(239, 68, 68, 0.4)",
-                    rotate: [0, -1, 1, 0]
-                  }}
-                  whileTap={{ scale: 0.95 }}
                   className="w-full bg-red-500 text-white py-4 comic-border-red rounded-xl comic-text text-xl hover:bg-red-600 transition-all duration-300 flex items-center justify-center space-x-3"
                 >
-                  <Send className="w-6 h-6" />
+                  <Icon icon="mdi:send" className="w-6 h-6" />
                   <span>🚀 LAUNCH MESSAGE</span>
-                </motion.button>
+                </AnimatedButton>
               </form>
             </div>
           </motion.div>
@@ -295,21 +289,19 @@ const Contact = () => {
             className="text-center"
           >
             <div className="comic-border bg-white p-6 rounded-2xl inline-block">
-              <p className="comic-text text-gray-800 mb-2">
-                ⚡ CODED WITH SUPERPOWERS BY FRONTEND HERO ⚡
+              <p className="comic-text text-gray-800 mb-2 flex items-center justify-center gap-2">
+                <Icon icon="mdi:flash" className="text-yellow-400" />
+                CODED WITH SUPERPOWERS BY FRONTEND HERO
+                <Icon icon="mdi:flash" className="text-yellow-400" />
               </p>
               <p className="text-gray-600">
                 Built with React ⚛️ • Tailwind 🎨 • Framer Motion 🎬 • TypeScript 💪
               </p>
-              <div className="mt-4">
-                <motion.span
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                  className="inline-block text-2xl"
-                >
-                  🦸‍♂️
-                </motion.span>
-                <span className="comic-marker text-red-600 ml-2">© 2024 - THE END... OR IS IT?</span>
+              <div className="mt-4 flex items-center justify-center">
+                <Icon icon="mdi:superhero" className="text-2xl" />
+                <span className="comic-marker text-red-600 ml-2">
+                  <Icon icon="mdi:copyright" className="inline-block -mt-1" /> 2024 - THE END... OR IS IT?
+                </span>
               </div>
             </div>
           </motion.div>

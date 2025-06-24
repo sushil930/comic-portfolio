@@ -1,6 +1,6 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { motion } from 'framer-motion';
+import AnimatedButton from './ui/AnimatedButton';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -50,41 +50,25 @@ const Navigation = () => {
           
           <div className="hidden md:flex space-x-1">
             {navItems.map((item, index) => (
-              <motion.button
+              <AnimatedButton
                 key={item.name}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.02,
-                  rotate: [0, -1, 1, 0],
-                  transition: { duration: 0.2 }
-                }}
                 onClick={() => scrollToSection(item.href)}
                 className="bg-white comic-border px-2 py-1 rounded-full comic-text text-xs text-gray-800 hover:bg-blue-500 hover:text-white transition-all duration-200"
               >
                 {item.name}
-              </motion.button>
+              </AnimatedButton>
             ))}
           </div>
           
-          <motion.button
-            whileHover={{ 
-              scale: 1.02,
-              rotate: [0, -1, 1, 0],
-              transition: { duration: 0.2 }
-            }}
-            whileTap={{ scale: 0.98 }}
+          <AnimatedButton
             onClick={() => scrollToSection('#contact')}
             className="hidden md:block bg-red-500 text-white px-3 py-1 comic-border-red rounded-full comic-text text-xs hover:bg-yellow-400 hover:text-black transition-all duration-200"
           >
             💼 Hire Me
-          </motion.button>
+          </AnimatedButton>
 
           {/* Mobile menu button */}
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <AnimatedButton
             className="md:hidden bg-red-500 text-white p-1 comic-border rounded-full"
             aria-label="Toggle mobile menu"
           >
@@ -93,7 +77,7 @@ const Navigation = () => {
               <span className="block w-2 h-0.5 bg-white mb-0.5"></span>
               <span className="block w-2 h-0.5 bg-white"></span>
             </div>
-          </motion.button>
+          </AnimatedButton>
         </div>
       </div>
     </motion.nav>

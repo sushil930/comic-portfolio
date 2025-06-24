@@ -1,7 +1,7 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Eye, Star, Zap } from 'lucide-react';
+import { Icon } from '@iconify/react';
+import AnimatedButton from './ui/AnimatedButton';
 
 const Projects = () => {
   const projects = [
@@ -10,7 +10,12 @@ const Projects = () => {
       subtitle: "The Shopping Hero's Platform",
       description: "Built a powerful e-commerce platform that can handle any shopping mission! Features real-time inventory, secure payments, and responsive design that works faster than a speeding bullet!",
       image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=600&h=400&fit=crop",
-      tech: ["React ⚛️", "Node.js 🟢", "MongoDB 🍃", "Stripe 💳"],
+      tech: [
+        { name: "React", icon: "logos:react" },
+        { name: "Node.js", icon: "logos:nodejs-icon" },
+        { name: "MongoDB", icon: "logos:mongodb-icon" },
+        { name: "Stripe", icon: "logos:stripe" }
+      ],
       liveUrl: "#",
       githubUrl: "#",
       featured: true,
@@ -23,7 +28,12 @@ const Projects = () => {
       subtitle: "The Ultimate Team Coordinator",
       description: "Assembled a collaborative task management tool with drag-and-drop powers! Real-time updates keep the team synchronized better than any superhero squad!",
       image: "https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&h=400&fit=crop",
-      tech: ["Next.js 🚀", "TypeScript 💪", "Prisma ⚡", "TailwindCSS 🎨"],
+      tech: [
+        { name: "Next.js", icon: "logos:nextjs-icon" },
+        { name: "TypeScript", icon: "logos:typescript-icon" },
+        { name: "Prisma", icon: "logos:prisma" },
+        { name: "TailwindCSS", icon: "logos:tailwindcss-icon" }
+      ],
       liveUrl: "#",
       githubUrl: "#",
       featured: false,
@@ -36,7 +46,12 @@ const Projects = () => {
       subtitle: "The Climate Control Dashboard",
       description: "Created a beautiful weather application with location-based forecasts and interactive maps! More accurate than any weather wizard's crystal ball!",
       image: "https://images.unsplash.com/photo-1504608524841-42fe6f032b4b?w=600&h=400&fit=crop",
-      tech: ["React ⚛️", "Chart.js 📊", "Weather API 🌤️", "CSS3 🎨"],
+      tech: [
+        { name: "React", icon: "logos:react" },
+        { name: "Chart.js", icon: "mdi:chart-bar" },
+        { name: "Weather API", icon: "mdi:weather-partly-cloudy" },
+        { name: "CSS3", icon: "logos:css-3" }
+      ],
       liveUrl: "#",
       githubUrl: "#",
       featured: true,
@@ -49,7 +64,12 @@ const Projects = () => {
       subtitle: "The Ultimate Showcase",
       description: "This very portfolio website! Built with modern animations, responsive design, and optimized performance. A true masterpiece of digital craftsmanship!",
       image: "https://images.unsplash.com/photo-1487058792275-0ad4aaf24ca7?w=600&h=400&fit=crop",
-      tech: ["React ⚛️", "Framer Motion 🎬", "Tailwind 🎨", "Vite ⚡"],
+      tech: [
+        { name: "React", icon: "logos:react" },
+        { name: "Framer Motion", icon: "icon-park:framer" },
+        { name: "Tailwind", icon: "logos:tailwindcss-icon" },
+        { name: "Vite", icon: "logos:vitejs" }
+      ],
       liveUrl: "#",
       githubUrl: "#",
       featured: false,
@@ -155,7 +175,7 @@ const Projects = () => {
                       transition={{ delay: 0.5 + index * 0.1 }}
                       className="absolute -top-2 -right-2 bg-yellow-400 comic-border rounded-full p-3"
                     >
-                      <Star className="w-6 h-6 text-red-600" />
+                      <Icon icon="mdi:star" className="w-6 h-6 text-red-600" />
                     </motion.div>
                   )}
                 </div>
@@ -174,11 +194,11 @@ const Projects = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
                     <div className="absolute bottom-4 left-4 flex items-center space-x-4 text-white">
                       <div className="flex items-center gap-2 comic-border bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                        <Eye className="w-4 h-4" />
+                        <Icon icon="mdi:eye" className="w-4 h-4" />
                         <span className="comic-text text-sm">{project.stats.views}</span>
                       </div>
                       <div className="flex items-center gap-2 comic-border bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
-                        <Star className="w-4 h-4" />
+                        <Icon icon="mdi:star" className="w-4 h-4" />
                         <span className="comic-text text-sm">{project.stats.stars}</span>
                       </div>
                     </div>
@@ -191,14 +211,14 @@ const Projects = () => {
                       href={project.liveUrl}
                       className="bg-green-500 comic-border p-3 rounded-full shadow-lg hover:bg-green-600"
                     >
-                      <ExternalLink className="w-5 h-5 text-white" />
+                      <Icon icon="mdi:external-link" className="w-5 h-5 text-white" />
                     </motion.a>
                     <motion.a
                       whileHover={{ scale: 1.2, rotate: -360 }}
                       href={project.githubUrl}
                       className="bg-purple-500 comic-border p-3 rounded-full shadow-lg hover:bg-purple-600"
                     >
-                      <Github className="w-5 h-5 text-white" />
+                      <Icon icon="mdi:github" className="w-5 h-5 text-white" />
                     </motion.a>
                   </div>
                 </div>
@@ -217,38 +237,37 @@ const Projects = () => {
                   <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map((tech, techIndex) => (
                       <motion.span
-                        key={tech}
+                        key={tech.name}
                         initial={{ opacity: 0, scale: 0 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         transition={{ delay: techIndex * 0.1 }}
                         whileHover={{ scale: 1.1, rotate: [0, -5, 5, 0] }}
-                        className="comic-border bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-3 py-1 rounded-full comic-text text-sm cursor-pointer"
+                        className="comic-border bg-gradient-to-r from-yellow-400 to-orange-400 text-black px-3 py-1 rounded-full comic-text text-sm cursor-pointer flex items-center gap-1"
                       >
-                        {tech}
+                        <Icon icon={tech.icon} className="w-4 h-4" />
+                        {tech.name}
                       </motion.span>
                     ))}
                   </div>
                   
                   {/* Action Buttons */}
                   <div className="flex space-x-4">
-                    <motion.a
-                      whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }}
-                      whileTap={{ scale: 0.95 }}
+                    <AnimatedButton
+                      as="a"
                       href={project.liveUrl}
                       className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 comic-border rounded-xl comic-text hover:bg-blue-600 transition-colors duration-200"
                     >
-                      <Zap className="w-4 h-4" />
+                      <Icon icon="mdi:flash" className="w-4 h-4" />
                       LIVE DEMO
-                    </motion.a>
-                    <motion.a
-                      whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }}
-                      whileTap={{ scale: 0.95 }}
+                    </AnimatedButton>
+                    <AnimatedButton
+                      as="a"
                       href={project.githubUrl}
                       className="flex items-center gap-2 comic-border bg-white text-gray-700 px-4 py-2 rounded-xl comic-text hover:bg-gray-50 transition-colors duration-200"
                     >
-                      <Github className="w-4 h-4" />
+                      <Icon icon="mdi:github" className="w-4 h-4" />
                       SOURCE
-                    </motion.a>
+                    </AnimatedButton>
                   </div>
                 </div>
               </div>
@@ -274,17 +293,11 @@ const Projects = () => {
             <p className="comic-text text-gray-600 mb-6">
               I'm constantly working on new epic projects and experimenting with cutting-edge technologies!
             </p>
-            <motion.button
-              whileHover={{ 
-                scale: 1.1, 
-                boxShadow: "0 20px 40px rgba(255, 0, 0, 0.4)",
-                rotate: [0, -2, 2, 0]
-              }}
-              whileTap={{ scale: 0.9 }}
+            <AnimatedButton
               className="bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl hover:bg-red-600 transition-colors duration-200"
             >
               🚀 VIEW ALL ADVENTURES
-            </motion.button>
+            </AnimatedButton>
           </div>
         </motion.div>
       </div>

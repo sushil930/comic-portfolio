@@ -19,4 +19,26 @@ export default defineConfig(({ mode }) => ({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react') || id.includes('framer-motion') || id.includes('lucide-react')) {
+              return 'vendor_frameworks';
+            }
+            return 'vendor';
+          }
+        },
+      },
+    },
+    chunkSizeWarningLimit: 1000,
+    performance: {
+      hints: 'warning',
+    },
+  },
+  preview: {
+    port: 8080,
+    open: true,
+  },
 }));

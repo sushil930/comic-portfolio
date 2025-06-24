@@ -1,35 +1,35 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code, Layout, Star, Heart, Coffee, Rocket, BookOpen, Lightbulb } from 'lucide-react';
+import { Icon } from '@iconify/react';
+import AnimatedButton from './ui/AnimatedButton';
 
 const About = () => {
   const comicPanels = [
     {
       title: "CHAPTER 1: THE BEGINNING",
       content: "Once upon a time, a curious kid discovered the magic of computers...",
-      icon: BookOpen,
+      icon: 'mdi:book-open-page-variant',
       color: "bg-yellow-400",
       rotation: "rotate-2"
     },
     {
       title: "CHAPTER 2: FIRST CODE",
       content: "console.log('Hello World!') - And with that, a hero was born!",
-      icon: Code,
+      icon: 'mdi:code-tags',
       color: "bg-red-500",
       rotation: "-rotate-1"
     },
     {
       title: "CHAPTER 3: FRONTEND DISCOVERY",
       content: "The moment I saw my first website come to life... EUREKA! 💡",
-      icon: Lightbulb,
+      icon: 'mdi:lightbulb-on-outline',
       color: "bg-blue-500",
       rotation: "rotate-1"
     },
     {
       title: "CHAPTER 4: THE MISSION",
       content: "Today: Creating amazing web experiences and seeking internship adventures!",
-      icon: Rocket,
+      icon: 'mdi:rocket',
       color: "bg-green-500",
       rotation: "-rotate-2"
     }
@@ -37,21 +37,21 @@ const About = () => {
 
   const superpowers = [
     {
-      icon: Code,
+      icon: 'mdi:code-tags',
       title: "Clean Code Master",
       description: "Writing maintainable, scalable code with superhuman precision!",
       color: "bg-green-500",
       level: 90
     },
     {
-      icon: Layout,
+      icon: 'mdi:view-dashboard-outline',
       title: "Responsive Design Wizard",
       description: "Making websites look amazing on ANY device - from smartwatch to billboard!",
       color: "bg-blue-500",
       level: 95
     },
     {
-      icon: Star,
+      icon: 'mdi:star',
       title: "UX Superhero",
       description: "Creating user experiences so good, they'll think it's magic!",
       color: "bg-purple-500",
@@ -113,7 +113,7 @@ const About = () => {
             >
               <div className="flex items-start space-x-4">
                 <div className={`${panel.color} comic-border p-3 rounded-full`}>
-                  <panel.icon className="w-8 h-8 text-white" />
+                  <Icon icon={panel.icon} className="w-8 h-8 text-white" />
                 </div>
                 <div className="flex-1">
                   <h3 className="comic-text text-xl text-gray-900 mb-3">
@@ -158,7 +158,7 @@ const About = () => {
             >
               <div className="comic-border bg-white p-6 rounded-2xl hover:shadow-2xl transition-all duration-300">
                 <div className={`${power.color} comic-border p-4 rounded-full w-20 h-20 mx-auto mb-4 group-hover:animate-bounce-custom`}>
-                  <power.icon className="w-12 h-12 text-white mx-auto" />
+                  <Icon icon={power.icon} className="w-12 h-12 text-white mx-auto" />
                 </div>
                 
                 <h4 className="comic-text text-xl text-gray-900 mb-3 text-center">
@@ -204,9 +204,18 @@ const About = () => {
         </motion.div>
 
         <div className="flex flex-wrap justify-center gap-4 mb-16">
-          {['React ⚛️', 'TypeScript 💪', 'Next.js 🚀', 'Tailwind 🎨', 'Node.js 🟢', 'Git 📝', 'Figma 🎯', 'MongoDB 🍃'].map((skill, index) => (
+          {[
+            { name: 'React', icon: 'logos:react' },
+            { name: 'TypeScript', icon: 'logos:typescript-icon' },
+            { name: 'Next.js', icon: 'logos:nextjs-icon' },
+            { name: 'Tailwind', icon: 'logos:tailwindcss-icon' },
+            { name: 'Node.js', icon: 'logos:nodejs-icon' },
+            { name: 'Git', icon: 'logos:git-icon' },
+            { name: 'Figma', icon: 'logos:figma' },
+            { name: 'MongoDB', icon: 'logos:mongodb-icon' }
+          ].map((skill, index) => (
             <motion.div
-              key={skill}
+              key={skill.name}
               initial={{ opacity: 0, scale: 0, rotate: -180 }}
               whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -216,9 +225,10 @@ const About = () => {
                 rotate: [0, -5, 5, 0],
                 transition: { duration: 0.3 }
               }}
-              className="comic-border bg-white px-6 py-3 rounded-full comic-text text-gray-800 cursor-pointer hover:bg-yellow-100 transition-colors duration-200"
+              className="comic-border bg-white px-6 py-3 rounded-full comic-text text-gray-800 cursor-pointer hover:bg-yellow-100 transition-colors duration-200 flex items-center gap-2"
             >
-              {skill}
+              <Icon icon={skill.icon} className="w-5 h-5" />
+              {skill.name}
             </motion.div>
           ))}
         </div>
@@ -236,17 +246,11 @@ const About = () => {
             <p className="comic-text text-gray-600 mb-6">
               I'm seeking internship opportunities to join forces with amazing teams!
             </p>
-            <motion.button
-              whileHover={{ 
-                scale: 1.1, 
-                rotate: [0, -2, 2, 0],
-                transition: { rotate: { duration: 0.3 } }
-              }}
-              whileTap={{ scale: 0.9 }}
+            <AnimatedButton
               className="bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl hover:bg-red-600 transition-colors duration-200"
             >
               🚀 LET'S CONNECT!
-            </motion.button>
+            </AnimatedButton>
           </div>
         </motion.div>
       </div>

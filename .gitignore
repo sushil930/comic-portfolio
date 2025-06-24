@@ -22,3 +22,81 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Environment variables
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Build outputs
+/dist
+/build
+/out
+
+# NPM
+/node_modules
+npm-debug.log
+yarn-error.log
+
+# Mac
+.DS_Store
+
+#- [CVS](http://www.cvshome.org/)
+/.cvsignore
+# - [Subversion](http://subversion.tigris.org/)
+/.svn
+# - [GNU Bazaar](http://bazaar-vcs.org/)
+/.bzr
+# - [Mercurial](http://www.selenic.com/mercurial/)
+/.hg
+
+# Bun
+.bun
+bun.lockb
+*.bun
+report.report
+
+# PNPM
+pnpm-lock.yaml
+
+# Yarn
+yarn.lock
+.yarn/
+.pnp.js
+.pnp.cjs
+
+# Lerna
+lerna-debug.log
+
+# Deno
+/deno.lock
+deno.jsonc
+
+# Test
+/coverage
+.nyc_output
+*.lcov
+
+# Power BI
+*.pbix
+*.pbit
+
+# Cache
+.npm/
+.yarn/cache
+.eslintcache
+
+# Misc
+.eslintcache
+.stylelintcache
+.prettiercache
+.swc/
+*.tsbuildinfo
+.idea/
+*.iml
+
+# OS generated files
+ehthumbs.db
+Thumbs.db
