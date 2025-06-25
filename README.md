@@ -6,6 +6,10 @@ Welcome to the **Comic Portfolio**! This is a vibrant and dynamic React applicat
 
 This portfolio website is crafted with a vibrant comic book theme, featuring playful design elements like 'POW!' and 'ZAP!' exclamations, dotted background patterns, and speech bubble-inspired components. It's designed to be a memorable and engaging showcase of my skills, projects, and professional journey as a frontend hero!
 
+## 🌐 Live Demo
+
+Check it out on Vercel: [comic-portfolio-rho.vercel.app](https://comic-portfolio-rho.vercel.app/)
+
 ## ⚙️ Technologies Used
 
 -   **Frontend**: React
@@ -80,4 +84,3 @@ This project is open-sourced under the MIT License.
 
 ---
 
-Coded with superpowers by Frontend Hero! Built with React, Tailwind, Framer Motion, and TypeScript. © 2024 [Your Name/Company]. All rights reserved.
