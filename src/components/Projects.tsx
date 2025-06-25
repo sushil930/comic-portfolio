@@ -252,22 +252,20 @@ const Projects = () => {
                   
                   {/* Action Buttons */}
                   <div className="flex space-x-4">
-                    <AnimatedButton
-                      as="a"
+                    <a
                       href={project.liveUrl}
-                      className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 comic-border rounded-xl comic-text hover:bg-blue-600 transition-colors duration-200"
+                      className="flex items-center gap-2 bg-blue-500 text-white px-4 py-2 comic-border rounded-xl comic-text"
                     >
                       <Icon icon="mdi:flash" className="w-4 h-4" />
                       LIVE DEMO
-                    </AnimatedButton>
-                    <AnimatedButton
-                      as="a"
+                    </a>
+                    <a
                       href={project.githubUrl}
-                      className="flex items-center gap-2 comic-border bg-white text-gray-700 px-4 py-2 rounded-xl comic-text hover:bg-gray-50 transition-colors duration-200"
+                      className="flex items-center gap-2 comic-border bg-white text-gray-700 px-4 py-2 rounded-xl comic-text"
                     >
                       <Icon icon="mdi:github" className="w-4 h-4" />
                       SOURCE
-                    </AnimatedButton>
+                    </a>
                   </div>
                 </div>
               </div>
@@ -293,11 +291,12 @@ const Projects = () => {
             <p className="comic-text text-gray-600 mb-6">
               I'm constantly working on new epic projects and experimenting with cutting-edge technologies!
             </p>
-            <AnimatedButton
-              className="bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl hover:bg-red-600 transition-colors duration-200"
+            <button
+              className="bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl"
+              onClick={() => window.location.hash = '#contact'}
             >
               🚀 VIEW ALL ADVENTURES
-            </AnimatedButton>
+            </button>
           </div>
         </motion.div>
       </div>

@@ -93,7 +93,7 @@ const Navigation = () => {
         >
           <div className="px-4 pt-2 pb-4 space-y-2 bg-white/95 backdrop-blur-md">
             {navItems.map((item) => (
-              <AnimatedButton
+              <button
                 key={item.name}
                 onClick={() => {
                   scrollToSection(item.href);
@@ -102,7 +102,7 @@ const Navigation = () => {
                 className="block w-full text-left bg-transparent comic-border px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-gray-900 hover:bg-gray-50"
               >
                 {item.name}
-              </AnimatedButton>
+              </button>
             ))}
           </div>
         </motion.div>

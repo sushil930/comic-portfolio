@@ -265,13 +265,13 @@ const Contact = () => {
                   />
                 </div>
 
-                <AnimatedButton
+                <button
                   type="submit"
-                  className="w-full bg-red-500 text-white py-4 comic-border-red rounded-xl comic-text text-xl hover:bg-red-600 transition-all duration-300 flex items-center justify-center space-x-3"
+                  className="w-full bg-red-500 text-white py-4 comic-border-red rounded-xl comic-text text-xl flex items-center justify-center space-x-3"
                 >
                   <Icon icon="mdi:send" className="w-6 h-6" />
                   <span>🚀 LAUNCH MESSAGE</span>
-                </AnimatedButton>
+                </button>
               </form>
             </div>
           </motion.div>

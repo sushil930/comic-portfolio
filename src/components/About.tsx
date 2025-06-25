@@ -122,11 +122,6 @@ const About = () => {
                   <p className="comic-text text-gray-700">{panel.content}</p>
                 </div>
               </div>
-              
-              {/* Comic panel number */}
-              <div className="absolute -top-3 -right-3 bg-red-500 comic-border rounded-full w-12 h-12 flex items-center justify-center">
-                <span className="comic-text text-white text-lg">{index + 1}</span>
-              </div>
             </motion.div>
           ))}
         </div>
@@ -246,11 +241,12 @@ const About = () => {
             <p className="comic-text text-gray-600 mb-6">
               I'm seeking internship opportunities to join forces with amazing teams!
             </p>
-            <AnimatedButton
-              className="bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl hover:bg-red-600 transition-colors duration-200"
+            <button
+              className="bg-red-500 text-white px-8 py-4 comic-border-red rounded-2xl comic-text text-xl"
+              onClick={() => window.location.hash = '#contact'}
             >
               🚀 LET'S CONNECT!
-            </AnimatedButton>
+            </button>
           </div>
         </motion.div>
       </div>

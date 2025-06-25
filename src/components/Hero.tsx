@@ -28,7 +28,7 @@ const Hero = () => {
 
 
   return (
-    <section id="hero" className="min-h-screen pt-16 md:pt-20 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-yellow-300 via-red-200 to-blue-300">
+    <section id="hero" className="min-h-screen pt-16 md:pt-20 pb-16 md:pb-24 flex items-center justify-center relative overflow-hidden bg-gradient-to-br from-yellow-300 via-red-200 to-blue-300">
       {/* Comic Background Elements */}
       <div className="absolute inset-0">
         {/* Halftone Pattern */}
@@ -118,23 +118,22 @@ const Hero = () => {
 
           {/* Comic Action Buttons */}
           <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
-            <AnimatedButton
-              className="group relative bg-red-500 text-white px-6 md:px-8 py-3 md:py-4 comic-border-red rounded-2xl comic-text text-lg md:text-xl transform -rotate-1 hover:rotate-0 transition-transform duration-300"
+            <button
+              className="group relative bg-red-500 text-white px-6 md:px-8 py-3 md:py-4 comic-border-red rounded-2xl comic-text text-lg md:text-xl"
+              onClick={() => window.location.hash = '#skills'}
             >
               <span className="relative z-10">🚀 EXPLORE MY SUPERPOWERS</span>
-              <motion.div
-                className="absolute inset-0 bg-yellow-400 comic-border-red rounded-2xl"
-                initial={{ scale: 0 }}
-                whileHover={{ scale: 1 }}
-                transition={{ duration: 0.2 }}
-              />
-            </AnimatedButton>
+            </button>
             
-            <AnimatedButton
-              className="bg-blue-500 text-white px-6 md:px-8 py-3 md:py-4 comic-border-blue rounded-2xl comic-text text-lg md:text-xl transform rotate-1 hover:rotate-0 transition-transform duration-300"
+            <button
+              className="bg-blue-500 text-white px-6 md:px-8 py-3 md:py-4 comic-border-blue rounded-2xl comic-text text-lg md:text-xl"
+              onClick={() => window.open('https://github.com/yourusername', '_blank')}
             >
-              📜 DOWNLOAD ORIGIN STORY
-            </AnimatedButton>
+              <span className="flex items-center gap-2">
+                <Icon icon="mdi:github" className="w-6 h-6" />
+                VIEW CODE
+              </span>
+            </button>
           </motion.div>
 
           {/* Tech Stack Badges */}
@@ -198,25 +197,6 @@ const Hero = () => {
           </motion.div>
         </motion.div>
       </div>
-
-      {/* Comic Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 3 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <motion.div
-          animate={{ y: [0, 20, 0], rotate: [0, 5, -5, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-          className="cursor-pointer group"
-        >
-          <div className="speech-bubble">
-            <p className="comic-text text-sm text-gray-800 mb-2">SCROLL FOR MORE!</p>
-            <Icon icon="mdi:arrow-down" className="w-6 h-6 text-red-600 mx-auto animate-bounce" />
-          </div>
-        </motion.div>
-      </motion.div>
     </section>
   );
 };

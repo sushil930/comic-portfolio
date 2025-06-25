@@ -9,6 +9,7 @@
     --font-sans: 'Poppins', sans-serif;
     --font-heading: 'Bangers', cursive;
     --font-body: 'Comic Neue', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
     --card: 0 0% 100%;
@@ -39,41 +40,8 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --card: 240 10% 3.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 240 10% 3.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 346.8 77.2% 49.8%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 240 3.7% 15.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
-    --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 240 3.7% 15.9%;
-    --input: 240 3.7% 15.9%;
-    --ring: 346.8 77.2% 49.8%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
   * {
-    @apply border-border;
+    @apply border-[var(--border)];
   }
 
   html {
@@ -81,7 +49,7 @@
   }
 
   body, button, a, [role="button"], input[type="submit"], textarea {
-    cursor: url("data:image/svg+xml;utf8,<svg fill='%23000000' width='32px' height='32px' viewBox='0 0 22 22' xmlns='http://www.w3.org/2000/svg' id='memory-sword'><path d='M8 3V4H9V5H10V6H11V7H12V8H13V9H14V10H15V11H16V12H17V11H19V13H18V14H17V15H18V16H19V17H20V19H19V20H17V19H16V18H15V17H14V18H13V19H11V17H12V16H11V15H10V14H9V13H8V12H7V11H6V10H5V9H4V8H3V7H2V2H7V3H8M7 5H6V4H4V5H5V6H6V7H7V8H8V9H9V10H10V11H11V12H12V13H14V12H13V11H12V10H11V9H10V8H9V7H8V6H7V5Z' /></svg>"), auto !important;
+    cursor: url('/cursors/new-cursor.svg') 0 0, pointer !important;
   }
 
   /* Reduce motion for users who prefer it */
@@ -95,11 +63,26 @@
       scroll-behavior: auto !important;
     }
   }
+
+  /* Base font styles */
+  body {
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
 }
 
 @layer utilities {
   .comic-title {
-    @apply font-heading text-6xl md:text-8xl tracking-wider;
+    font-family: var(--font-heading);
+    @apply text-6xl md:text-8xl tracking-wider;
     text-rendering: optimizeLegibility;
   }
   
@@ -109,7 +92,7 @@
   }
   
   .comic-text {
-    @apply font-body font-bold text-lg;
+    @apply font-sans font-bold text-lg;
   }
   
   .comic-marker {
@@ -199,6 +182,21 @@
 
   .glassmorphism {
     @apply bg-clip-padding backdrop-filter backdrop-blur-xl bg-opacity-60 border border-gray-200;
+  }
+  
+  /* Fresh cursor implementation */
+  button, a, .clickable {
+    cursor: url('/cursors/new-cursor.svg') 0 0, pointer;
+  }
+
+  button:hover, a:hover, .clickable:hover {
+    cursor: url('/cursors/new-cursor.svg') 0 0, pointer;
+  }
+  
+  button:hover, a:hover, .clickable:hover {
+    filter: brightness(1.1);
+    transform: scale(1.02);
+    transition: all 0.2s ease;
   }
 }
 
