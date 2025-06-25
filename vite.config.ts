@@ -14,8 +14,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     react(),
-    mode === 'development' &&
-    componentTagger(),
+    // mode === 'development' &&
+    // componentTagger(),
   ].filter(Boolean),
   resolve: {
     alias: {
@@ -23,18 +23,18 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react') || id.includes('framer-motion') || id.includes('lucide-react')) {
-              return 'vendor_frameworks';
-            }
-            return 'vendor';
-          }
-        },
-      },
-    },
+    // rollupOptions: {
+    //   output: {
+    //     manualChunks(id) {
+    //       if (id.includes('node_modules')) {
+    //         if (id.includes('react') || id.includes('framer-motion') || id.includes('lucide-react')) {
+    //           return 'vendor_frameworks';
+    //         }
+    //         return 'vendor';
+    //       }
+    //     },
+    //   },
+    // },
     chunkSizeWarningLimit: 1000,
     performance: {
       hints: 'warning',
